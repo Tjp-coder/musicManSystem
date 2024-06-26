@@ -1,0 +1,57 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center; /* 让表单内元素居中 */
+    margin: auto; /* 让表单在页面水平居中 */
+}
+h2 {
+    text-align: center;
+}
+label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+input[type="submit"] {
+    background-color: #068cd7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+}
+input[type="submit"]:hover {
+    background-color: #068cd7;
+}
+a {
+    text-decoration: none;
+    color: #068cd7;
+    text-align: center;
+    display: block;
+    margin-top: 15px;
+}

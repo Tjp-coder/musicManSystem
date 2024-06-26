@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.MusicMapper">
+
+    <!-- 查询所有音乐 -->
+    <select id="queryAll" resultType="bean.Music">
+        SELECT * FROM tb_music
+    </select>
+
+    <!-- 根据关键词查询音乐 -->
+    <select id="queryMusicsByKey" resultType="bean.Music">
+        SELECT * FROM tb_music
+        <if test="key != null and key != ''">
+            WHERE musicname LIKE CONCAT('%', #{key}, '%')
+        </if>
+    </select>
+
+    <!-- 根据音乐ID查询 -->
+    <select id="findByMusicId" parameterType="int" resultType="bean.Music">
+        SELECT * FROM tb_music WHERE id = #{id}
+    </select>
+
+    <!-- 添加音乐 -->
+    <insert id="addMusic" parameterType="bean.Music">
+        INSERT INTO tb_music (musicname, singer, ranking)
+        VALUES (#{musicName}, #{singer}, #{ranking})
+    </insert>
+
+    <!-- 更新音乐信息 -->
+    <update id="updateMusic" parameterType="bean.Music">
+        UPDATE tb_music
+        SET musicname = #{musicName}, singer = #{singer}, ranking = #{ranking}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 删除音乐 -->
+    <delete id="deleteMusic" parameterType="int">
+        DELETE FROM tb_music WHERE id = #{id}
+    </delete>
+</mapper>

@@ -59,11 +59,23 @@
             display: flex;
             flex-wrap: wrap;
         }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
 <form action="login" method="post">
     <h2 style="text-align: center;">Login</h2>
+
+    <% if (request.getAttribute("errorMessage") != null) { %>
+    <div class="error-message">
+        <%= request.getAttribute("errorMessage") %>
+    </div>
+    <% } %>
+
     <label for="username">账号:</label>
     <input type="text" id="username" name="username" required>
 

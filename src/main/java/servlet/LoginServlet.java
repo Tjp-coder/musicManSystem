@@ -8,7 +8,6 @@ import service.UserService;
 import service.impl.UserServiceImpl;
 
 import java.io.IOException;
-
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,16 +30,17 @@ public class LoginServlet extends HttpServlet {
                 Cookie cookie = new Cookie("username", username);
                 cookie.setMaxAge(30 * 24 * 60 * 60); // 设置有效期为30天
                 response.addCookie(cookie);
-//                System.out.println("cookie添加");
-//                System.out.println(cookie.getName()+cookie.getValue());
             }
 
             response.sendRedirect("work/index.jsp"); // 重定向到欢迎页面
         } else {
             // 登录失败
-            response.sendRedirect("login.jsp?error=1"); // 重定向到登录页面，并附带错误参数
+            request.setAttribute("errorMessage", "账号或密码错误，请重新输入。");
+            request.getRequestDispatcher("login.jsp").forward(request, response); // 转发到登录页面，并附带错误参数
         }
     }
+
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

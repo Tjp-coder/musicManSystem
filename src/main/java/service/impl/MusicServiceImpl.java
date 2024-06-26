@@ -9,44 +9,57 @@ import util.MybatisUtils;
 import java.util.List;
 
 public class MusicServiceImpl implements MusicService {
-    private final MusicMapper musicMapper;
-
-    public MusicServiceImpl() {
-        SqlSession sqlSession = MybatisUtils.getSession();
-        musicMapper = sqlSession.getMapper(MusicMapper.class);
-    }
     @Override
-    public List<Music> queryAll() throws Exception {
-        return musicMapper.queryAll();
+    public List<Music> queryAll() {
+        try (SqlSession sqlSession = MybatisUtils.getSession()) {
+            MusicMapper mapper = sqlSession.getMapper(MusicMapper.class);
+            return mapper.queryAll();
+        }
     }
 
     @Override
-    public List<Music> queryMusicsByKey(String key) throws Exception {
-        return musicMapper.queryMusicsByKey(key);
+    public List<Music> queryMusicsByKey(String key) {
+        try (SqlSession sqlSession = MybatisUtils.getSession()) {
+            MusicMapper mapper = sqlSession.getMapper(MusicMapper.class);
+            return mapper.queryMusicsByKey(key);
+        }
     }
 
     @Override
-    public Music findByMusicId(int id) throws Exception {
-        return musicMapper.findByMusicId(id);
+    public Music findByMusicId(int id) {
+        try (SqlSession sqlSession = MybatisUtils.getSession()) {
+            MusicMapper mapper = sqlSession.getMapper(MusicMapper.class);
+            return mapper.findByMusicId(id);
+        }
     }
 
     @Override
-    public int updateMusic(Music music) throws Exception {
-        int rows = musicMapper.updateMusic(music);
-        return rows;
+    public int updateMusic(Music music) {
+        try (SqlSession sqlSession = MybatisUtils.getSession()) {
+            MusicMapper mapper = sqlSession.getMapper(MusicMapper.class);
+            int rows = mapper.updateMusic(music);
+            sqlSession.commit(); // 提交事务
+            return rows;
+        }
     }
 
     @Override
-    public int addMusic(Music music) throws Exception {
-        int rows = musicMapper.addMusic(music);
-        System.out.println("----------------:"+rows);
-        return rows;
+    public int addMusic(Music music) {
+        try (SqlSession sqlSession = MybatisUtils.getSession()) {
+            MusicMapper mapper = sqlSession.getMapper(MusicMapper.class);
+            int rows = mapper.addMusic(music);
+            sqlSession.commit(); // 提交事务
+            return rows;
+        }
     }
 
     @Override
-    public int deleteMusic(int id) throws Exception {
-        int rows = musicMapper.deleteMusic(id);
-        System.out.println("----------------:"+rows);
-        return rows;
+    public int deleteMusic(int id) {
+        try (SqlSession sqlSession = MybatisUtils.getSession()) {
+            MusicMapper mapper = sqlSession.getMapper(MusicMapper.class);
+            int rows = mapper.deleteMusic(id);
+            sqlSession.commit(); // 提交事务
+            return rows;
+        }
     }
 }

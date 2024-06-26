@@ -6,15 +6,15 @@ import java.util.List;
 
 public interface MusicMapper {
     //增删改查
-    public List<Music> queryAll() throws Exception;
+    public List<Music> queryAll() ;
 
-    public List<Music> queryMusicsByKey(String key) throws Exception;
+    public List<Music> queryMusicsByKey(String key) ;
 
-    Music findByMusicId(int id) throws Exception;
+    Music findByMusicId(int id);
 
-    public int addMusic(Music music) throws Exception;
+    public int addMusic(Music music) ;
 
-    public int updateMusic(Music music) throws Exception;
+    public int updateMusic(Music music) ;
 
-    public int deleteMusic(int musicId) throws Exception;
+    public int deleteMusic(int musicId);
 }

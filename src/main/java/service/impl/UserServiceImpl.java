@@ -9,23 +9,26 @@ import util.MybatisUtils;
 
 
 public class UserServiceImpl implements UserService {
-    private final UserMapper userMapper;
-
-    public UserServiceImpl() {
-        SqlSession sqlSession = MybatisUtils.getSession();
-        userMapper = sqlSession.getMapper(UserMapper.class);
-    }
 
     @Override
     public boolean login(User user) {
-        User userByUser = userMapper.findUserByUser(user);
-        System.out.println(userByUser);
-        return  userByUser !=null;
+        try (SqlSession sqlSession = MybatisUtils.getSession()) {
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            User userByUser = mapper.findUserByUser(user);
+            return userByUser != null;
+        }
     }
 
     @Override
     public boolean register(User user) {
-        int rows = userMapper.insertUser(user);
-        return rows > 0;
+
+
+
+        try (SqlSession sqlSession = MybatisUtils.getSession()) {
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            int rows = mapper.insertUser(user);
+            sqlSession.commit(); // 提交事务
+            return rows > 0;
+        }
     }
 }

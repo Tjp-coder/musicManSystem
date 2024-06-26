@@ -9,7 +9,6 @@ import jakarta.servlet.http.*;
 import service.UserService;
 import service.impl.UserServiceImpl;
 
-
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -23,8 +22,25 @@ public class RegisterServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
 
-        User user = new User(username,password,name,gender,phone,email);
+        // 在后端进行校验
+        if (username == null || username.isEmpty() || password == null || password.isEmpty() || name == null || name.isEmpty()) {
+            // 校验失败，注册信息不全
+            request.setAttribute("error", "注册信息不全，请填写完整");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
+            dispatcher.forward(request, response);
+            return;
+        }
+
         UserService userService = new UserServiceImpl();
-        userService.register(user);
+        boolean success = userService.register(new User(username, password, name, gender, phone, email));
+
+        if (success) {
+            response.sendRedirect("login.jsp");
+        } else {
+            // 注册失败提示注册信息不对，请重新输入
+            request.setAttribute("error", "注册信息不对，请重新输入");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 }

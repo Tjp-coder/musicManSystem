@@ -10,7 +10,7 @@
     </settings>
     <!--配置别名-->
     <typeAliases>
-<!--        <typeAlias type="bean.Category" alias="Category"/>-->
+        <typeAlias type="bean.Category" alias="Category"/>
 <!--        <typeAlias type="bean.Comment" alias="Comment"/>-->
         <typeAlias type="bean.Music" alias="Music"/>
 <!--        <typeAlias type="bean.PlayRecord" alias="PlayRecord"/>-->

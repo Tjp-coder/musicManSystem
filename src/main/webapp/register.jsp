@@ -6,18 +6,29 @@
     <title>Register Page</title>
     <link rel="stylesheet" href="css/register.css">
 
+    <style>
+        .required-star {
+            color: red; /* 设置星号颜色为红色 */
+            font-weight: bold; /* 设置星号为粗体 */
+        }
+    </style>
 </head>
 <body>
+<!-- 在注册表单之前显示注册错误信息 -->
+<% if (request.getAttribute("error") != null) { %>
+<p style="color: red;"><%= request.getAttribute("error") %></p>
+<% } %>
+
 <form action="register" method="post">
     <h2>Register</h2>
-    <label for="username">账号:</label>
-    <input type="text" id="username" name="username" required>
+    <label for="username">账号:<span class="required-star">*</span></label>
+    <input type="text" id="username" name="username" required placeholder="请输入账号" >
 
-    <label for="password">密码:</label>
-    <input type="password" id="password" name="password" required>
+    <label for="password">密码:<span class="required-star">*</span></label>
+    <input type="password" id="password" name="password" required placeholder="请输入密码">
 
-    <label for="name">姓名:</label>
-    <input type="text" id="name" name="name">
+    <label for="name">姓名:<span class="required-star">*</span></label>
+    <input type="text" id="name" name="name" required placeholder="请输入姓名">
 
     <label for="gender">性别:</label>
     <select id="gender" name="gender">

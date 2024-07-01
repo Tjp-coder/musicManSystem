@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
                 response.addCookie(cookie);
             }
 
-            response.sendRedirect("work/index.jsp"); // 重定向到欢迎页面
+            response.sendRedirect("work/toIndex.jsp"); // 重定向到欢迎页面
         } else {
             // 登录失败
             request.setAttribute("errorMessage", "账号或密码错误，请重新输入。");

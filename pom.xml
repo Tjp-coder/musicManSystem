@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>work3</artifactId>
+    <artifactId>musicManSystem</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>work3</name>
+    <name>musicManSystem</name>
     <packaging>war</packaging>
 
     <properties>

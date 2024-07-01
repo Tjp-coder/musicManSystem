@@ -11,29 +11,32 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService {
 
     @Override
-    public void addCategory(String categoryName) {
+    public int addCategory(String categoryName) {
         try (SqlSession session = MybatisUtils.getSession()) {
             CategoryMapper mapper = session.getMapper(CategoryMapper.class);
-            mapper.addCategory(categoryName);
+            int row = mapper.addCategory(categoryName);
             session.commit();
+            return row;
         }
     }
 
     @Override
-    public void deleteCategory(int id) {
+    public int deleteCategory(int id) {
         try (SqlSession session = MybatisUtils.getSession()) {
             CategoryMapper mapper = session.getMapper(CategoryMapper.class);
-            mapper.deleteCategory(id);
+            int row = mapper.deleteCategory(id);
             session.commit();
+            return row;
         }
     }
 
     @Override
-    public void updateCategory(Category category) {
+    public int updateCategory(Category category) {
         try (SqlSession session = MybatisUtils.getSession()) {
             CategoryMapper mapper = session.getMapper(CategoryMapper.class);
-            mapper.updateCategory(category);
+            int row = mapper.updateCategory(category);
             session.commit();
+            return row;
         }
     }
 

@@ -3,6 +3,7 @@ package util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+@Deprecated
 public class ConnectionProvider {
     // 数据库连接信息
     private static final String URL = "jdbc:mysql://localhost:3306/db_web_work";

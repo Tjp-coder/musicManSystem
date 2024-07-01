@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>首页</title>
+    <title>音乐管理系统 - 音乐管理</title>
     <!-- 引入CSS样式表 -->
     <link rel="stylesheet" href="../css/work/showAllMusics.css">
 </head>
@@ -28,6 +28,10 @@
         }
     }
 </script>
+
+
+
+
 <body>
 <!-- 搜索表单 -->
 <form action="showAllMusics" method="post">

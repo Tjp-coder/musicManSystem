@@ -5,6 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class DBUtil {
     private Connection connection = null;
     private PreparedStatement ps = null;

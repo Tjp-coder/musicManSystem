@@ -5,11 +5,11 @@ import bean.Category;
 import java.util.List;
 
 public interface CategoryMapper {
-    void addCategory(String categoryName);
+    int addCategory(String categoryName);
 
-    void deleteCategory(int id);
+    int deleteCategory(int id);
 
-    void updateCategory( Category category);
+    int updateCategory( Category category);
 
     List<Category> getAllCategories();
 }

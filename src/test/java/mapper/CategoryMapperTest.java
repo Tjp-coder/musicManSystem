@@ -3,7 +3,7 @@ package mapperTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 import bean.Category;
-import mapper.CategoryMapper;
+import mapper.business.CategoryMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
